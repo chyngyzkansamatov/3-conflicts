@@ -4,5 +4,10 @@ resource "aws_instance" "web" {
 
   tags = {
     Name = "WebServer"
+    Environment = "Development" # ← Added this
   }
+}
+
+resource "aws_s3_bucket" "data" { # ← Added this
+  bucket = "my-data-bucket"
 }
