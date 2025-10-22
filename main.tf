@@ -13,4 +13,14 @@ resource "aws_instance" "web" {
 resource "aws_cloudwatch_alarm" "cpu" {   # Different resource
   alarm_name = "high-cpu-alarm"
   metric_name = "CPUUtilization"
+  instance_type = "t2.large" # you are changing this. This is NOT a conflict! It's a clean change.  
+
+  tags = {
+    Name = "WebServer"
+    Environment = "Development" # ← Added this
+  }
+}
+
+resource "aws_s3_bucket" "data" { # ← Added this
+  bucket = "my-data-bucket"
 }
