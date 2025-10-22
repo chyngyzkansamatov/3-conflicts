@@ -1,8 +1,10 @@
 resource "aws_instance" "web" {
   ami           = "ami-12345"
   instance_type = "t2.micro"
-
   tags = {
-    Name = "WebServer"
+    Name       = "WebServer"
+    CostCenter = "Engineering"    # Multiple new tags
+    Project    = "WebApp"
+    Owner      = "Platform Team"
   }
 }
